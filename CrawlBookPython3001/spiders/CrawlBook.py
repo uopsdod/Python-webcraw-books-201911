@@ -3,6 +3,31 @@ from scrapy.selector import Selector
 from scrapy import Request
 import urllib
 
+"""
+
+MUST_TO:
+DONE understand the basics of Scrapy
+DONE understnad the basics of xpath 
+DONE get a rough information of the first page (88 books got)
+DONE fix the issue of the only 88 books found 
+DONE go to the second page (yield response.follow)
+DONE get the category information
+DONE output a rudimentary json output file 
+DONE fix the chinese character issue in the output file 
+* get the original price information and output it 
+* clean the code a bit to comply with pep8
+* sort and aggregate the category information 
+* structure the data in the output file (some layers required)
+* clean the code a bit to comply with pep8 
+* sort books according to the discount percentage information and provide a method to the nth books 
+* clean the code a bit to comply with pep8 
+* comply all existing comments with Google docstring format 
+
+OPTION:
+* python virtual environment
+* python unitesting
+
+"""
 class QuotesSpider(scrapy.Spider):
     '''requests are scheduled and processed asynchronously.'''
     name = 'books'
@@ -50,7 +75,7 @@ class QuotesSpider(scrapy.Spider):
             # books[counter] = book;
             bookname_counter += 1;
 
-        # 分類/原價
+
 
 
         # verify the final book list
@@ -62,13 +87,11 @@ class QuotesSpider(scrapy.Spider):
             print("hey008")
             print("[{:s},{:s},{:s},{:s}]".format(book.bookname,book.author,book.discount_price, book.category))
 
-        #TODO: fix bookname only has 84 counts
-        #TODO: fix bookauthor only has 83 counts
-        #TODO: fix book_discount_price only has 84 counts
 
     def parse_inner_url(self, response):
         book = response.meta['data']; # get the data passed from the previous request
 
+        # 分類
         category = ''
         for breadcrumb_selector in response.xpath('//body//ul[@class="container_24 type04_breadcrumb"]//li[contains(@itemtype,"Breadcrumb")]//a//span//text()'):
             category += breadcrumb_selector.extract() + ">"
@@ -77,6 +100,8 @@ class QuotesSpider(scrapy.Spider):
         print("hey009")
         print(type(category))
         print(category)
+
+        # 原價 TODO:NEXT
 
         yield {
             'category': book.category
