@@ -80,6 +80,7 @@ class QuotesSpider(scrapy.Spider):
         book.original_price = original_price
         # printObject("hey009",original_price)
 
+        # TODO:BUG - the total is not 100 again, fix it
         # output 
         yield {
             'book_name': book.bookname,
