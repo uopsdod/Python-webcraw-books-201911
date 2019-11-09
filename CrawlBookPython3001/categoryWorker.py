@@ -3,18 +3,29 @@
 import json
 import io
 
-with io.open('result.jl', 'r') as f:
+
+
+def printObject(identifier, obj):
+    print(identifier)
+    print(type(obj))
+    print(obj)
+
+with io.open('../result.jl', 'r', encoding='utf-8-sig') as f:
     # ...
     dict = {}; # put it up here to record all data
     count = 0;
     for line in f:
-        # line = line.encode('utf-8-sig')[3:].decode('utf-8-sig') # this works too
-        line = line.encode('utf-8')[3:].decode('utf-8')  # this works too
+        line = line.encode('utf-8-sig')[3:].decode('utf-8-sig') # this works too
+        # line = line.encode('utf-8')[3:].decode('utf-8')  # this works too
         jsonObj = json.loads(line)
         print(jsonObj['category'])
 
-        count += 1
+        # skip inaccessible information
+        if 'LOGIN_REQUIRED' == jsonObj['category']:
+            continue;
 
+        # increment category count
+        count += 1
         currKey = None
         for category in jsonObj['category'].split(">"):
 
@@ -32,10 +43,7 @@ with io.open('result.jl', 'r') as f:
 
         # check result
         print(dict)
-        print(count)
-
-        # print(jsonObj)
-
+        print("category count {:d} ".format(count))
 
 class CategoryWrapper:
     def __init__(self):
