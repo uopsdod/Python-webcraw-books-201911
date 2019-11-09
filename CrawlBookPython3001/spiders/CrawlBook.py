@@ -43,7 +43,7 @@ class QuotesSpider(scrapy.Spider):
         # }
         books = list();
 
-        bookname_counter = 0;
+        bookcount = 0;
 
         for general_selector in response.xpath('//body//div[@class="mod type02_m035 clearfix"]//li[contains(@class,"item")]//div[@class="type02_bd-a"]'): # use extract to get the textual data
             bookname_selectorlist = Selector(text=general_selector.get()).xpath('//a[contains(@href,"loc")]//text()') # this is how you reuse previous bigger Selector
@@ -53,7 +53,7 @@ class QuotesSpider(scrapy.Spider):
 
             # 書名
             # print("bookname - {:s}".format(bookname_selectorlist.get()))
-            print("count - {:d}".format(bookname_counter))
+            print("count - {:d}".format(bookcount))
             book = Book();
             book.bookname = bookname_selectorlist[0].extract();
             book.author = bookauthor_selectorlist[0].extract();
@@ -72,19 +72,17 @@ class QuotesSpider(scrapy.Spider):
 
             books.append(book);
             # books[counter] = book;
-            bookname_counter += 1;
+            bookcount += 1;
 
 
 
 
         # verify the final book list
-        print("bookname - count - {:d}".format(bookname_counter))
-        print("bookauthor - count - {:d}".format(bookname_counter))
-        print("book_discount_price - count - {:d}".format(bookname_counter))
+        print("bookcount - {:d}".format(bookcount))
 
-        for book in books:
-            print("hey008")
-            print("[{:s},{:s},{:s},{:s}]".format(book.bookname,book.author,book.discount_price, book.category))
+        # for book in books:
+        #     print("hey008")
+        #     print("[{:s},{:s},{:s},{:s}]".format(book.bookname,book.author,book.discount_price, book.category))
 
 
     def parse_inner_url(self, response):
@@ -101,13 +99,15 @@ class QuotesSpider(scrapy.Spider):
         # 原價 TODO:NEXT
         original_price = response.xpath('//body//div//div//div//div//div[@class="cnt_prod002 clearfix"]//div//div//ul[@class="price"]//li//em//text()')[0].extract()
         book.original_price = original_price
-        print("hey009")
-        print(type(original_price))
-        print(original_price)
+        # printObject("hey009",original_price)
 
+        # output - 書名/作者/分類/原價/折扣價
         yield {
+            'book_name': book.bookname,
+            'book_author': book.author,
             'category': book.category,
-            'original_price': book.original_price
+            'original_price': book.original_price,
+            'discount_price': book.discount_price
         }
 
 class Book:
@@ -120,3 +120,8 @@ class Book:
         self.discount_price = '';
         self.category = '';
         self.original_price = '';
+
+def printObject(identifier, obj):
+    print(identifier)
+    print(type(obj))
+    print(obj)
