@@ -1,7 +1,6 @@
 import scrapy
 from scrapy.selector import Selector
 from scrapy import Request
-import urllib
 
 """
 
@@ -23,7 +22,7 @@ DONE fix the chinese character issue in the output file
 * clean the code a bit to comply with pep8 
 * comply all existing comments with Google docstring format 
 
-OPTION:
+OPTION: 
 * python virtual environment
 * python unitesting
 
@@ -97,19 +96,19 @@ class QuotesSpider(scrapy.Spider):
             category += breadcrumb_selector.extract() + ">"
         category = category[:-1] # remove the last character
         book.category = category
-        print("hey009")
-        print(type(category))
-        print(category)
+
 
         # 原價 TODO:NEXT
+        original_price = response.xpath('//body//div//div//div//div//div[@class="cnt_prod002 clearfix"]//div//div//ul[@class="price"]//li//em//text()')[0].extract()
+        book.original_price = original_price
+        print("hey009")
+        print(type(original_price))
+        print(original_price)
 
         yield {
-            'category': book.category
+            'category': book.category,
+            'original_price': book.original_price
         }
-
-    def to_write(uni_str):
-        return urllib.unquote(uni_str.encode('utf8')).decode('utf8')
-
 
 class Book:
     """ Book class represents books on Books.com """
@@ -120,3 +119,4 @@ class Book:
         self.author = ''
         self.discount_price = '';
         self.category = '';
+        self.original_price = '';
