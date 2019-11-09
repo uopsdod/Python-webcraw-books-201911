@@ -74,14 +74,23 @@ class QuotesSpider(scrapy.Spider):
 
         # category
         category = ''
-        for breadcrumb_selector in response.xpath('//body//ul[@class="container_24 type04_breadcrumb"]//li[contains(@itemtype,"Breadcrumb")]//a//span//text()'):
-            category += breadcrumb_selector.extract() + ">"
-        category = category[:-1] # remove the last character
-        book.category = category
+        breadcrumb_selectorlist = response.xpath('//body//ul[@class="container_24 type04_breadcrumb"]//li[contains(@itemtype,"Breadcrumb")]//a//span//text()')
+        if len(breadcrumb_selectorlist) != 0:
+            for breadcrumb_selector in breadcrumb_selectorlist:
+                category += breadcrumb_selector.extract() + ">"
+            category = category[:-1]  # remove the last character
+            book.category = category
+        else:
+            book.category = 'LOGIN_REQUIRED'
 
         # original_price
-        original_price = response.xpath('//body//div//div//div//div//div[@class="cnt_prod002 clearfix"]//div//div//ul[@class="price"]//li//em//text()')[0].extract()
-        book.original_price = original_price
+        original_price_selectorlist = response.xpath('//body//div//div//div//div//div[@class="cnt_prod002 clearfix"]//div//div//ul[@class="price"]//li//em//text()')
+        if len(original_price_selectorlist) != 0:
+            original_price = original_price_selectorlist[0].extract()
+            book.original_price = original_price
+        else:
+            book.original_price = 'LOGIN_REQUIRED'
+
         # printObject("hey009",original_price)
 
         # TODO:BUG - the total is not 100 again, fix it
