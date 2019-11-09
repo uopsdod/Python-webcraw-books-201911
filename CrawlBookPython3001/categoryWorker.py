@@ -5,9 +5,40 @@ import io
 
 with io.open('result.jl', 'r') as f:
     # ...
+    dict = {}; # put it up here to record all data
+    count = 0;
     for line in f:
         # line = line.encode('utf-8-sig')[3:].decode('utf-8-sig') # this works too
         line = line.encode('utf-8')[3:].decode('utf-8')  # this works too
         jsonObj = json.loads(line)
-        print(jsonObj['book_name'])
-        print(jsonObj)
+        print(jsonObj['category'])
+
+        count += 1
+
+        currKey = None
+        for category in jsonObj['category'].split(">"):
+
+            # construct the key for dictionary
+            if currKey is None:
+                currKey = category
+            else:
+                currKey = currKey + "/" + category
+            # increment the value for each key
+            if currKey in dict:
+                dict[currKey] += 1;
+            else:
+                dict[currKey] = 1; # initialize it as 1
+            # print(category)
+
+        # check result
+        print(dict)
+        print(count)
+
+        # print(jsonObj)
+
+
+class CategoryWrapper:
+    def __init__(self):
+        """ initialize attributes """
+        self.categories; # ary
+
