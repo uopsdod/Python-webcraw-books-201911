@@ -44,9 +44,13 @@ class QuotesSpider(scrapy.Spider):
 
             # get bookname, bookauthor, discount_price on the 1st-layer page
             book = Book();
-            book.bookname = bookname_selectorlist[0].extract();
-            book.author = bookauthor_selectorlist[0].extract();
-            book.discount_price = book_discount_price_selectorlist[0].extract();  # TODO: restore it
+            if len(bookname_selectorlist) != 0:
+                book.bookname = bookname_selectorlist[0].extract();
+            printObject("hey002", book.bookname)
+            if len(bookauthor_selectorlist) != 0:
+                book.author = bookauthor_selectorlist[0].extract();
+            if len(book_discount_price_selectorlist) != 0:
+                book.discount_price = book_discount_price_selectorlist[0].extract();  # TODO: restore it
 
             # go to the 2nd-layer page to get category and original_price
             inner_url = Selector(text=general_selector.get()).xpath('//a/@href')[0].extract();
