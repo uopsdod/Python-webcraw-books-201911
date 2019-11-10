@@ -6,35 +6,31 @@ import collections
 
 def execute_category():
     with io.open('output/bookcrawler_result.jl', 'r', encoding='utf-8-sig') as f, io.open('output/categoryworker_result.txt', 'w', encoding='utf-8-sig') as fw:
-        # ...
         dict = {};  # put it up here to record all data
         count = 0;
         for line in f:
-            line = line.encode('utf-8-sig')[3:].decode('utf-8-sig')  # this works too
-            # line = line.encode('utf-8')[3:].decode('utf-8')  # this works too
-            jsonObj = json.loads(line)
+            line = line.encode('utf-8-sig')[3:].decode('utf-8-sig')  # solve bom issue 
+            bookJsonObj = json.loads(line)
 
             # skip inaccessible information
-            if 'LOGIN_REQUIRED' == jsonObj['category']:
+            if 'LOGIN_REQUIRED' == bookJsonObj['category']:
                 continue;
 
-            # increment category count
-            count += 1
-            currKey = None
-            for category in jsonObj['category'].split(">"):
+            # assemble category key list
+            count += 1 # for debugging purpose
+            category_keylist = list()
+            for category in bookJsonObj['category'].split(">"):
+                if len(category_keylist) == 0:
+                    category_keylist.append(category)
+                else:
+                    category_keylist.append(category_keylist[-1] + "/" + category)
 
-                # construct the key for dictionary
-                if currKey is None:
-                    currKey = category
+            # increment category count
+            for key in category_keylist:
+                if key in dict:
+                    dict[key] += 1
                 else:
-                    currKey = currKey + "/" + category
-                # increment the value for each key
-                # TODO: count has bugs, we only count categories one time even if there are more sub-sub categories
-                if currKey in dict:
-                    dict[currKey] += 1;
-                else:
-                    dict[currKey] = 1;  # initialize it as 1
-                # print(category)
+                    dict[key] = 1
 
         # sort the books according to the dictionary key
         dict_filtered = collections.OrderedDict(sorted(dict.items()))
