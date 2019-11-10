@@ -3,6 +3,7 @@ from scrapy.selector import Selector
 import os
 """
 MUST DO:
+* 附上如何執行、原始碼、以及你實際花了多少時間
 
 OPTION:
 * python virtual environment
