@@ -1,5 +1,6 @@
 ### how to run the project
 cd [project_folder]
+
 scrapy crawl books
 ### how to check the result
 cd [project_folder]/CrawlBookPython3001/output
