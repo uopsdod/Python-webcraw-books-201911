@@ -89,3 +89,5 @@ ITEM_PIPELINES = {
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 FEED_EXPORT_ENCODING = 'utf-8-sig'
+
+BOOKCRAWLER_OUTPUT_FILE_PATH = 'CrawlBookPython3001/output/bookcrawler_result.jl'

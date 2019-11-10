@@ -6,8 +6,8 @@ import collections
 
 class Categoryworker:
     """A class to process category-related information"""
-    def execute_category(self):
-        with io.open('output/bookcrawler_result.jl', 'r', encoding='utf-8-sig') as f, io.open('output/categoryworker_result.txt', 'w', encoding='utf-8-sig') as fw:
+    def execute_category(self, source_file_path):
+        with io.open(source_file_path, 'r', encoding='utf-8-sig') as f, io.open('CrawlBookPython3001/output/categoryworker_result.txt', 'w', encoding='utf-8-sig') as fw:
             dict = {};  # put it up here to record all data
             count = 0;
             for line in f:

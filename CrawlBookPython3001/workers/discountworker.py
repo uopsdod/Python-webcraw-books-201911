@@ -6,9 +6,9 @@ import math
 
 class Discountworker:
     """A class to process discount-related information"""
-    def execute_discount(self):
+    def execute_discount(self, source_file_path):
         # get n% book according to the discount percentage
-        with io.open('output/bookcrawler_result.jl', 'r', encoding='utf-8-sig') as f, io.open('output/discountworker_result.txt', 'w', encoding='utf-8-sig') as fw:
+        with io.open(source_file_path, 'r', encoding='utf-8-sig') as f, io.open('CrawlBookPython3001/output/discountworker_result.txt', 'w', encoding='utf-8-sig') as fw:
             dict = {};  # put it up here to record all data
             count = 0;
             books = list()
@@ -25,7 +25,7 @@ class Discountworker:
             # sort the books according to the discount percentage in a descending order
             books = sorted(books, key=lambda i: i['discount_percentage'], reverse=True)
             # filter the n% books out
-            books_filtered = self.listTopNthBooks(books, relative_nth=50) # relative_nth range from 0 ~ 100
+            books_filtered = self.listTopNthBooks(books, relative_nth=48) # relative_nth range from 0 ~ 100
             print("booksFiltered count: from {:d} -> {:d}".format(len(books), len(books_filtered)))
             # show result
             print(books_filtered)
