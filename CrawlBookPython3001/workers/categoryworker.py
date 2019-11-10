@@ -4,31 +4,36 @@ import json
 import io
 import collections
 
+
 class Categoryworker:
     """A class to process category-related information"""
     def execute_category(self, source_file_path):
-        with io.open(source_file_path, 'r', encoding='utf-8-sig') as f, io.open('CrawlBookPython3001/output/categoryworker_result.txt', 'w', encoding='utf-8-sig') as fw:
-            dict = {};  # put it up here to record all data
-            count = 0;
+        output_path = 'CrawlBookPython3001/output/categoryworker_result.txt'
+        encoding_str = 'utf-8-sig'
+        with io.open(source_file_path, 'r', encoding=encoding_str) as f, \
+                io.open(output_path, 'w', encoding=encoding_str) as fw:
+            dict = {}  # put it up here to record all data
+            count = 0
             for line in f:
-                line = line.encode('utf-8-sig')[3:].decode('utf-8-sig')  # solve bom issue
+                # solve bom issue
+                line = line.encode(encoding_str)[3:].decode(encoding_str)
                 bookJsonObj = json.loads(line)
 
                 # skip inaccessible information
                 if 'LOGIN_REQUIRED' == bookJsonObj['category']:
-                    continue;
+                    continue
 
                 # assemble category key list
-                count += 1 # for debugging purpose
-                category_keylist = list()
+                count += 1  # for debugging purpose
+                category_keys = list()
                 for category in bookJsonObj['category'].split(">"):
-                    if len(category_keylist) == 0:
-                        category_keylist.append(category)
+                    if len(category_keys) == 0:
+                        category_keys.append(category)
                     else:
-                        category_keylist.append(category_keylist[-1] + "/" + category)
+                        category_keys.append(category_keys[-1]+"/"+category)
 
                 # increment category count
-                for key in category_keylist:
+                for key in category_keys:
                     if key in dict:
                         dict[key] += 1
                     else:
@@ -44,7 +49,8 @@ class Categoryworker:
                 fw.write(tmp_line)
             print("category count {:d} ".format(count))
 
-def printObject(identifier, obj):
+
+def print_object(identifier, obj):
     print(identifier)
     print(type(obj))
     print(obj)
