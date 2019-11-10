@@ -6,7 +6,7 @@ import math
 
 def execute_discount():
     # get n% book according to the discount percentage
-    with io.open('output/crawlbook.jl', 'r', encoding='utf-8-sig') as f:
+    with io.open('output/crawlbook.jl', 'r', encoding='utf-8-sig') as f, io.open('output/discountworker_result.txt', 'w', encoding='utf-8-sig') as fw:
         dict = {};  # put it up here to record all data
         count = 0;
         books = list()
@@ -27,6 +27,10 @@ def execute_discount():
         print("booksFiltered count: from {:d} -> {:d}".format(len(books), len(books_filtered)))
         # show result
         print(books_filtered)
+        # store the output in dictionary format
+        for book in books_filtered:
+            fw.write(str(book))
+            fw.write("\r\n")
 
 def listTopNthBooks(list, relative_nth):
     if relative_nth < 0:

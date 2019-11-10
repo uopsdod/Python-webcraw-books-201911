@@ -42,8 +42,8 @@ def execute_category():
         # show result
         print(dict_filtered)
         for k, v in dict_filtered.items():
-            line = k + " " + str(v) + "\r\n"
-            fw.write(line)
+            tmp_line = k + " " + str(v) + "\r\n"
+            fw.write(tmp_line)
         print("category count {:d} ".format(count))
 
 
