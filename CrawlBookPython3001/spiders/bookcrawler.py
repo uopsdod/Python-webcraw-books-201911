@@ -3,11 +3,11 @@ from scrapy.selector import Selector
 import os
 """
 MUST DO:
-* comply all existing comments with Google docstring format
 
 OPTION:
 * python virtual environment
 * python unitesting
+* comply all existing comments with Google docstring format
 
 """
 
