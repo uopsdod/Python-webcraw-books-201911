@@ -5,7 +5,7 @@ import io
 import collections
 
 def execute_category():
-    with io.open('output/crawlbook.jl', 'r', encoding='utf-8-sig') as f:
+    with io.open('output/crawlbook.jl', 'r', encoding='utf-8-sig') as f, io.open('output/categoryworker_result.txt', 'w', encoding='utf-8-sig') as fw:
         # ...
         dict = {};  # put it up here to record all data
         count = 0;
@@ -29,6 +29,7 @@ def execute_category():
                 else:
                     currKey = currKey + "/" + category
                 # increment the value for each key
+                # TODO: count has bugs, we only count categories one time even if there are more sub-sub categories
                 if currKey in dict:
                     dict[currKey] += 1;
                 else:
@@ -40,8 +41,11 @@ def execute_category():
 
         # show result
         print(dict_filtered)
-        # for k, v in od.items(): print(k, v)
+        for k, v in dict_filtered.items():
+            line = k + " " + str(v) + "\r\n"
+            fw.write(line)
         print("category count {:d} ".format(count))
+
 
 def printObject(identifier, obj):
     print(identifier)
