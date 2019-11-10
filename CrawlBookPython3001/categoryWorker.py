@@ -13,7 +13,6 @@ def execute_category():
             line = line.encode('utf-8-sig')[3:].decode('utf-8-sig')  # this works too
             # line = line.encode('utf-8')[3:].decode('utf-8')  # this works too
             jsonObj = json.loads(line)
-            print(jsonObj['category'])
 
             # skip inaccessible information
             if 'LOGIN_REQUIRED' == jsonObj['category']:
@@ -36,9 +35,9 @@ def execute_category():
                     dict[currKey] = 1;  # initialize it as 1
                 # print(category)
 
-            # check result
-            print(dict)
-            print("category count {:d} ".format(count))
+        # check result
+        print(dict)
+        print("category count {:d} ".format(count))
 
 def printObject(identifier, obj):
     print(identifier)
