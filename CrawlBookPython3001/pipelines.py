@@ -11,15 +11,19 @@ import json
 
 class Crawlbookpython3001Pipeline(object):
 
-    def __init__(self, bookcrawler_output_file_path):
+    def __init__(self, bookcrawler_output_file_path, relative_nth):
         self.bookcrawler_output_file_path = bookcrawler_output_file_path
+        self.relative_nth = relative_nth
 
     @classmethod
     def from_crawler(cls, crawler):
         return cls(
             bookcrawler_output_file_path=crawler.settings.get(
                 'BOOKCRAWLER_OUTPUT_FILE_PATH'
-            )
+            ),
+            relative_nth=crawler.settings.get(
+                'DISCOUNTWORKER_RELATIVE_NTH'
+            ),
         )
 
     def open_spider(self, spider):
@@ -39,5 +43,5 @@ class Crawlbookpython3001Pipeline(object):
             source_file_path=self.bookcrawler_output_file_path
         )
         Discountworker().execute_discount(
-            source_file_path=self.bookcrawler_output_file_path
+            source_file_path=self.bookcrawler_output_file_path, relative_nth=self.relative_nth
         )

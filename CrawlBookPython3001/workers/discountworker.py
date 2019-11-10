@@ -7,7 +7,7 @@ import math
 
 class Discountworker:
     """A class to process discount-related information"""
-    def execute_discount(self, source_file_path):
+    def execute_discount(self, source_file_path, relative_nth):
         # get n% book according to the discount percentage
         output_path = 'CrawlBookPython3001/output/discountworker_result.txt'
         encoding_str = 'utf-8-sig'
@@ -33,7 +33,7 @@ class Discountworker:
             books = sorted(books, key=lambda i: i[sortk], reverse=True)
             # filter the n% books out
             # relative_nth range from 0 ~ 100
-            books_filtered = self.listTopNthBooks(books, relative_nth=48)
+            books_filtered = self.listTopNthBooks(books, relative_nth=relative_nth)
             # show result
             print(books_filtered)
             # store the output in dictionary format
