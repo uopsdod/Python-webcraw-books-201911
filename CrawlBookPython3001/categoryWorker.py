@@ -41,53 +41,40 @@ def execute_category():
             print("category count {:d} ".format(count))
 
 def execute_discount():
-    # get n% book according to the discount
+    # get n% book according to the discount percentage
     with io.open('result.jl', 'r', encoding='utf-8-sig') as f:
         dict = {};  # put it up here to record all data
         count = 0;
         books = list()
         for line in f:
             line = line.encode('utf-8-sig')[3:].decode('utf-8-sig')  # this works too
-            # line = line.encode('utf-8')[3:].decode('utf-8')  # this works too
             bookJsonObj = json.loads(line)
-            printObject("hey002", bookJsonObj)
 
             if 'LOGIN_REQUIRED' == bookJsonObj['original_price']:
                 continue
 
-            print("{:s}-{:s}-{:f}".format(bookJsonObj['original_price'], bookJsonObj['discount_price'], float(bookJsonObj['original_price'])/float(bookJsonObj['discount_price'])));
             bookJsonObj['discount_percentage'] = (float(bookJsonObj['original_price']) - float(bookJsonObj['discount_price'])) / float(bookJsonObj['original_price'])
-            printObject("hey004", bookJsonObj['discount_percentage'])
-            printObject("hey005", bookJsonObj)
             books.append(bookJsonObj)
-            # printObject("hey003",bookJsonObj['discount'])
-            # print(jsonObj['original_price'])
-            # print(jsonObj['discount_price'])
-        print("The list printed sorting by discount_percentage: ")
-        books = sorted(books, key=lambda i: i['discount_percentage'], reverse=True)
-        print("books count: {:d}".format(len(books)))
-        print(books)
 
-        print("The list printed filtered by nth elements: ")
-        booksFiltered = listTopNthBooks(books, relative_nth=-1) # relative_nth range from 0 ~ 100
-        print("booksFiltered count: {:d}".format(len(booksFiltered)))
-        print(booksFiltered)
+        # sort the books according to the discount percentage in a descending order
+        books = sorted(books, key=lambda i: i['discount_percentage'], reverse=True)
+        # filter the n% books out
+        books_filtered = listTopNthBooks(books, relative_nth=50) # relative_nth range from 0 ~ 100
+        print("booksFiltered count: from {:d} -> {:d}".format(len(books), len(books_filtered)))
+        # show result
+        print(books_filtered)
 
 def listTopNthBooks(list, relative_nth):
     if relative_nth < 0:
         print("negative value for relative_nth is not allowed")
         return list[0:0];
-    printObject("hey007", len(list))
     nth = math.floor(len(list) * (relative_nth / 100)) # floor the nth number to get top n percentage elementnt
-    printObject("hey007", nth)
     return list[0:nth]
-
 
 def printObject(identifier, obj):
     print(identifier)
     print(type(obj))
     print(obj)
-
 
 if __name__ == "__main__":
     # execute_category()
