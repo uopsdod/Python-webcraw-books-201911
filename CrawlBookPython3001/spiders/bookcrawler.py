@@ -14,10 +14,10 @@ DONE output a rudimentary json output file
 DONE fix the chinese character issue in the output file 
 DONE get the original price information and output it 
 DONE clean the code a bit to comply with pep8
-* sort and aggregate the category information 
-* structure the data in the output file (some layers required)
-* clean the code a bit to comply with pep8 
-* sort books according to the discount percentage information and provide a method to the nth books 
+DONE sort and aggregate the category information 
+DONE structure the data in the output file (some layers required)
+DONE clean the code a bit to comply with pep8 
+DONE sort books according to the discount percentage information and provide a method to the nth books 
 * clean the code a bit to comply with pep8 
 * comply all existing comments with Google docstring format 
 
