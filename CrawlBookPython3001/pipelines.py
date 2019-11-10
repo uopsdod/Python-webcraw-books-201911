@@ -43,5 +43,6 @@ class Crawlbookpython3001Pipeline(object):
             source_file_path=self.bookcrawler_output_file_path
         )
         Discountworker().execute_discount(
-            source_file_path=self.bookcrawler_output_file_path, relative_nth=self.relative_nth
+            source_file_path=self.bookcrawler_output_file_path,
+            relative_nth=self.relative_nth
         )

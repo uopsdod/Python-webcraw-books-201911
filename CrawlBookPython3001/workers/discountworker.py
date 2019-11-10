@@ -33,7 +33,8 @@ class Discountworker:
             books = sorted(books, key=lambda i: i[sortk], reverse=True)
             # filter the n% books out
             # relative_nth range from 0 ~ 100
-            books_filtered = self.listTopNthBooks(books, relative_nth=relative_nth)
+            books_filtered = self.listTopNthBooks(books,
+                                                  relative_nth=relative_nth)
             # show result
             print(books_filtered)
             # store the output in dictionary format
