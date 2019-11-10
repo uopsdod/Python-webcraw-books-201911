@@ -19,15 +19,15 @@ class Crawlbookpython3001Pipeline(object):
             bookcrawler_output_file_path = crawler.settings.get('BOOKCRAWLER_OUTPUT_FILE_PATH')
         )
 
+    def open_spider(self, spider):
+        print('Crawlbookpython3001Pipeline open_spider() called')
+        self.file = open(self.bookcrawler_output_file_path, 'w')
+
     def process_item(self, item, spider):
         print('Crawlbookpython3001Pipeline process_item() called')
         line = json.dumps(dict(item),ensure_ascii=False) + "\n"
         self.file.write(line)
         return item
-
-    def open_spider(self, spider):
-        print('Crawlbookpython3001Pipeline open_spider() called')
-        self.file = open(self.bookcrawler_output_file_path, 'w')
 
     def close_spider(self, spider):
         print('Crawlbookpython3001Pipeline close_spider() called')
