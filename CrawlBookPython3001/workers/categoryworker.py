@@ -5,7 +5,7 @@ import io
 import collections
 
 def execute_category():
-    with io.open('output/crawlbook.jl', 'r', encoding='utf-8-sig') as f, io.open('output/categoryworker_result.txt', 'w', encoding='utf-8-sig') as fw:
+    with io.open('output/bookcrawler_result.jl', 'r', encoding='utf-8-sig') as f, io.open('output/categoryworker_result.txt', 'w', encoding='utf-8-sig') as fw:
         # ...
         dict = {};  # put it up here to record all data
         count = 0;
