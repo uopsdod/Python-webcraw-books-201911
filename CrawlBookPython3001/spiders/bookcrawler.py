@@ -49,7 +49,7 @@ class QuotesSpider(scrapy.Spider):
             if len(bookauthor_selectorlist) != 0:
                 book.author = bookauthor_selectorlist[0].extract();
             if len(book_discount_price_selectorlist) != 0:
-                book.discount_price = book_discount_price_selectorlist[0].extract();  # TODO: restore it
+                book.discount_price = book_discount_price_selectorlist[0].extract();
 
             # go to the 2nd-layer page to get category and original_price
             inner_url = Selector(text=general_selector.get()).xpath('//a/@href')[0].extract();
@@ -92,7 +92,6 @@ class QuotesSpider(scrapy.Spider):
 
         # printObject("hey009",original_price)
 
-        # TODO:BUG - the total is not 100 again, fix it
         # output 
         yield {
             'book_name': book.bookname,
