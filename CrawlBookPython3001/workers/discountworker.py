@@ -6,7 +6,7 @@ import math
 
 def execute_discount():
     # get n% book according to the discount percentage
-    with io.open('output/result.jl', 'r', encoding='utf-8-sig') as f:
+    with io.open('output/crawlbook.jl', 'r', encoding='utf-8-sig') as f:
         dict = {};  # put it up here to record all data
         count = 0;
         books = list()

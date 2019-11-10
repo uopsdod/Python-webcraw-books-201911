@@ -120,4 +120,4 @@ def printObject(identifier, obj):
 
 
 if __name__ == "__main__":
-    os.system("scrapy crawl books -o ../output/result.jl")
+    os.system("scrapy crawl books -o ../output/crawlbook.jl")
