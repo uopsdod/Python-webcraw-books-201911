@@ -2,7 +2,7 @@
 
 import json
 import io
-import math
+import collections
 
 def execute_category():
     with io.open('result.jl', 'r', encoding='utf-8-sig') as f:
@@ -35,8 +35,12 @@ def execute_category():
                     dict[currKey] = 1;  # initialize it as 1
                 # print(category)
 
-        # check result
-        print(dict)
+        # sort the books according to the dictionary key
+        dict_filtered = collections.OrderedDict(sorted(dict.items()))
+
+        # show result
+        print(dict_filtered)
+        # for k, v in od.items(): print(k, v)
         print("category count {:d} ".format(count))
 
 def printObject(identifier, obj):
