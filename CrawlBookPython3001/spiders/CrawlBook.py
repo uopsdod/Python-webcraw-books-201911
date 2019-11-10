@@ -1,7 +1,6 @@
 import scrapy
 from scrapy.selector import Selector
-from scrapy import Request
-
+import os
 """
 
 MUST_TO:
@@ -118,3 +117,7 @@ def printObject(identifier, obj):
     print(identifier)
     print(type(obj))
     print(obj)
+
+
+if __name__ == "__main__":
+    os.system("scrapy crawl books -o ../output/result.jl")
