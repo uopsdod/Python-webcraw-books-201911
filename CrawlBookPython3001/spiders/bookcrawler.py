@@ -44,6 +44,15 @@ class QuotesSpider(scrapy.Spider):
                 '//b//text()'
             )
 
+            # if there is no discount but only price
+            if len(discount_price_sellist) == 0:
+                discount_price_sellist = Selector(text=top_selector.get()).xpath(
+                    '//ul[@class="msg"]'
+                    '//li[@class="price_a"]'
+                    '//strong[1]'
+                    '//b//text()'
+                )
+
             # get bookname, bookauthor, discount_price on the 1st-layer page
             book = Book()
             if len(bookname_sellist) != 0:
