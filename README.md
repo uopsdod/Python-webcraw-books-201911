@@ -1,4 +1,4 @@
-### how to run the project
+### [ how to run the project ]
 #### 1. install python3 
 #### 2-1. install git 
 #### 2-2. git clone this project
@@ -25,10 +25,21 @@ scrapy crawl books
 
 deactivate
 
-### how to check the result
+
+
+### [ how to check the result ]
 
 ls CrawlBookPython3001/output
 
 you should see following three output files: 
 
 bookcrawler_result.jl  categoryworker_result.txt  discountworker_result.txt
+
+
+### [ custom Configurations ]
+
+CrawlBookPython3001/settings.py: DISCOUNTWORKER_RELATIVE_NTH parameter
+
+this defines the top n% book to be returned according to the discounts 
+
+
