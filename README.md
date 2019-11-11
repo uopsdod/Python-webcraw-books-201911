@@ -9,7 +9,7 @@ git clone https://github.com/uopsdod/Python-webcraw-books-201911.git
 
 cd Python-webcraw-books-201911
 
-#### 3. create and use a python virtual environment
+#### 3. create and use a python virtual environment (STEP01-STEP05)
 
 https://samcomlearning.blogspot.com/2019/11/python-create-virtual-environemnts-for.html
 
