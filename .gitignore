@@ -138,3 +138,9 @@ dmypy.json
 pyvenv.cfg
 .venv
 pip-selfcheck.json
+.idea/.gitignore
+.idea/CrawlBookPython3001.iml
+.idea/inspectionProfiles/
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
