@@ -46,7 +46,6 @@ class QuotesSpider(scrapy.Spider):
             book = Book()
             if len(bookname_sellist) != 0:
                 book.bookname = bookname_sellist[0].extract()
-            printObject("hey002", book.bookname)
             if len(bookauthor_sellist) != 0:
                 book.author = bookauthor_sellist[0].extract()
             if len(discount_p_sellist) != 0:
