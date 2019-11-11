@@ -1,14 +1,1 @@
-﻿{'book_name': '108課綱科學素養小達人：看故事培養解決問題的超能力(孩子的第一套STEAM繪遊書精選套書)', 'book_author': '胡儀芬,劉益廷,潘美慧', 'category': '博客來>中文書>童書/青少年文學>圖畫書>知識繪本', 'original_price': '1200', 'discount_price': '792', 'discount_percentage': 0.34}
-{'book_name': '新制多益NEW TOEIC聽力／閱讀題庫解析【博客來獨家套書】（附4 MP3）', 'book_author': 'Hackers Academia', 'category': '博客來>中文書>語言學習>語言能力檢定測驗>NEWTOEIC新多益>攻略/題庫', 'original_price': '1760', 'discount_price': '1162', 'discount_percentage': 0.3397727272727273}
-{'book_name': '金庸作品集平裝版(1～36冊)', 'book_author': '金庸', 'category': '博客來>中文書>文學小說>歷史/武俠小說>金庸武俠小說', 'original_price': '9000', 'discount_price': '6299', 'discount_percentage': 0.3001111111111111}
-{'book_name': '不！我不喜歡被捉弄', 'book_author': '梅麗莎．希金斯', 'category': '博客來>中文書>童書/青少年文學>圖畫書>生活教育', 'original_price': '280', 'discount_price': '210', 'discount_percentage': 0.25}
-{'book_name': '不要在該奮鬥時選擇安逸', 'book_author': '老楊的貓頭鷹', 'category': '博客來>中文書>心理勵志>勵志故事/散文>勵志小品文', 'original_price': '260', 'discount_price': '205', 'discount_percentage': 0.21153846153846154}
-{'book_name': '孿生子【限量作者親簽版】', 'book_author': '藤崎彩織', 'category': '博客來>中文書>文學小說>翻譯文學>日本文學', 'original_price': '360', 'discount_price': '284', 'discount_percentage': 0.2111111111111111}
-{'book_name': '解憂電影院（獨家燙金夜光書衣版）：那些電影教我的事2019最新力作！', 'book_author': '水ㄤ,水某', 'category': '博客來>中文書>心理勵志>勵志故事/散文>勵志小品文', 'original_price': '360', 'discount_price': '284', 'discount_percentage': 0.2111111111111111}
-{'book_name': '6分鐘日記的魔法：最簡單的書寫，改變你的一生【1書+1日記本】', 'book_author': '多明尼克．斯賓斯特', 'category': '博客來>中文書>商業理財>成功法>自我成長', 'original_price': '360', 'discount_price': '284', 'discount_percentage': 0.2111111111111111}
-{'book_name': '愛上氣炸鍋100天：椒麻雞．蜜汁叉燒．紙包魚．戚風蛋糕，天天開炸也不膩的100道美味氣炸鍋料理', 'book_author': '人愛柴', 'category': '博客來>中文書>飲食>食譜>小家電料理', 'original_price': '360', 'discount_price': '284', 'discount_percentage': 0.2111111111111111}
-{'book_name': '股市就是你的印鈔機：市井股神的籌碼飆股獲利法', 'book_author': '林上仁,郭勝', 'category': '博客來>中文書>商業理財>投資理財>股票／證券', 'original_price': '360', 'discount_price': '284', 'discount_percentage': 0.2111111111111111}
-{'book_name': '我用1檔ETF存自己的18%', 'book_author': '陳重銘', 'category': '博客來>中文書>商業理財>投資理財>股票／證券', 'original_price': '360', 'discount_price': '284', 'discount_percentage': 0.2111111111111111}
-{'book_name': '代謝力UP減醣好好：體重輕鬆瘦，體脂降10％的升級版技巧', 'book_author': '娜塔', 'category': '博客來>中文書>生活風格>塑身美妝>瘦身美體', 'original_price': '360', 'discount_price': '284', 'discount_percentage': 0.2111111111111111}
-{'book_name': '故事學：學校沒教，你也要會的表達力', 'book_author': '歐陽立中', 'category': '博客來>中文書>童書/青少年文學>語言學習>中文>閱讀/作文', 'original_price': '280', 'discount_price': '221', 'discount_percentage': 0.21071428571428572}
-{'book_name': '屁屁偵探 噗噗！ 雪山的白色怪物？！', 'book_author': 'Troll', 'category': '博客來>中文書>童書/青少年文學>圖畫書>幻想/冒險', 'original_price': '280', 'discount_price': '221', 'discount_percentage': 0.21071428571428572}
+﻿
