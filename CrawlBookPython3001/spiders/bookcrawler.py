@@ -1,17 +1,6 @@
 import scrapy
 from scrapy.selector import Selector
 import os
-"""
-MUST DO:
-* 附上如何執行、原始碼、以及你實際花了多少時間
-
-OPTION:
-* python virtual environment
-* python unitesting
-* comply all existing comments with Google docstring format
-
-"""
-
 
 class QuotesSpider(scrapy.Spider):
     '''requests are scheduled and processed asynchronously.'''
@@ -37,7 +26,7 @@ class QuotesSpider(scrapy.Spider):
                 '//a[contains(@href,"author")]'
                 '//text()'
             )
-            discount_price_sellist = Selector(text=top_selector.get()).xpath(
+            discount_p_sellist = Selector(text=top_selector.get()).xpath(
                 '//ul[@class="msg"]'
                 '//li[@class="price_a"]'
                 '//strong[2]'
@@ -45,8 +34,8 @@ class QuotesSpider(scrapy.Spider):
             )
 
             # if there is no discount but only price
-            if len(discount_price_sellist) == 0:
-                discount_price_sellist = Selector(text=top_selector.get()).xpath(
+            if len(discount_p_sellist) == 0:
+                discount_p_sellist = Selector(text=top_selector.get()).xpath(
                     '//ul[@class="msg"]'
                     '//li[@class="price_a"]'
                     '//strong[1]'
@@ -60,8 +49,8 @@ class QuotesSpider(scrapy.Spider):
             printObject("hey002", book.bookname)
             if len(bookauthor_sellist) != 0:
                 book.author = bookauthor_sellist[0].extract()
-            if len(discount_price_sellist) != 0:
-                book.discount_price = discount_price_sellist[0].extract()
+            if len(discount_p_sellist) != 0:
+                book.discount_price = discount_p_sellist[0].extract()
 
             # go to the 2nd-layer page to get category and original_price
             inner_url = Selector(text=top_selector.get()).xpath(
