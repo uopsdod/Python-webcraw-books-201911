@@ -31,8 +31,6 @@ deactivate
 
 ls CrawlBookPython3001/output
 
-you should see following three output files: 
-
 bookcrawler_result.jl  categoryworker_result.txt  discountworker_result.txt
 
 
